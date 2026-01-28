@@ -1,6 +1,6 @@
 {
   "input_path": "week1/data/raw/walmart_sales.csv",
-  "output_path": "week1/data/processed/output.csv",
+  "output_path": "week1/data/processed/walmart_sales_cleaned.csv",
 
   "date_columns": [
     "Date"
