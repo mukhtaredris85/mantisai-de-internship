@@ -15,21 +15,6 @@ The program performs the following tasks:
 - Python 3.9 or higher
 - Required libraries (see `requirements.txt`)
 
-## Project Structure
-
-
-etl-project/
-├── pipeline.py               # Main ETL script
-├── config.json               # Configuration file (paths, transformations, etc.)
-├── requirements.txt
-├── data/
-│   ├── raw/
-│   │   └── walmart_sales.csv     # Original input file
-│   └── processed/
-│       └── walmart_sales_cleaned.csv   # Output file
-└── logs/
-    └── pipeline.log          # Execution logs
-
 ## How to Run
 1. Prepare the files
   - Make sure you have pipeline.py, config.json, and requirements.txt in your project folder

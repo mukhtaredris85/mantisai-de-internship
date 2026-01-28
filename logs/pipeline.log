@@ -35,3 +35,15 @@
 2026-01-28 14:54:22,078 - INFO - Failed to transform Date |  0 of  6435
 2026-01-28 14:54:22,080 - INFO - Data transformation completed successfully.
 2026-01-28 14:54:22,110 - INFO - Processed data saved to week1/data/processed/walmart_sales_cleaned.csv
+2026-01-28 15:08:35,139 - INFO - Successfully loaded data from week1/data/raw/walmart_sales.csv
+2026-01-28 15:08:35,210 - INFO - Failed to transform Date |  0 of  6435
+2026-01-28 15:08:35,213 - INFO - Data transformation completed successfully.
+2026-01-28 15:08:35,254 - INFO - Processed data saved to week1/data/processed/walmart_sales_cleaned.csv
+2026-01-28 15:17:21,062 - INFO - Successfully loaded data from week1/data/raw/walmart_sales.csv
+2026-01-28 15:17:21,181 - INFO - Failed to transform Date |  0 of  6435
+2026-01-28 15:17:21,184 - INFO - Data transformation completed successfully.
+2026-01-28 15:17:21,227 - INFO - Processed data saved to week1/data/processed/walmart_sales_cleaned.csv
+2026-01-28 18:52:12,438 - INFO - Successfully loaded data from week1/data/raw/walmart_sales.csv
+2026-01-28 18:52:12,489 - INFO - Failed to transform Date |  0 of  6435
+2026-01-28 18:52:12,491 - INFO - Data transformation completed successfully.
+2026-01-28 18:52:12,522 - INFO - Processed data saved to week1/data/processed/walmart_sales_cleaned.csv
