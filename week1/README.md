@@ -28,3 +28,23 @@ The program performs the following tasks:
 4. Expected output
   - Processed file: data/processed/walmart_sales_cleaned.csv (you can change the path in config.json)
   - Log file: logs/pipeline.log
+
+5. Automate ETL execution with windows task scheular
+  - To run the ETL pipeline automatically every 6 hours:
+
+  1) Create a batch file and write the code available in (`run_etl.bat`)
+  2) Open Task Scheduler (Win + S → "Task Scheduler")
+  3) Create Task (not Basic Task):
+      - General: Give it a name (e.g. "ETL Walmart Every 6h")
+      → Select "Run whether user is logged on or not"
+      → Check "Run with highest privileges"
+  4) Triggers → New:
+      - Daily
+      - Repeat task every: 6 hours
+      - for a duration of: Indefinitely
+  5) Actions → New:
+      - Action: Start a program
+      - Program/script: full path to run_etl.bat
+  6) OK → enter your Windows password if prompted
+  7) Test: Right-click the task → Run
+      - Check output file and log to confirm it works.
