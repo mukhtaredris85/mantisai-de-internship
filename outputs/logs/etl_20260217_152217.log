@@ -1,0 +1,17 @@
+2026-02-17 15:22:17,368 | INFO    | Starting NYC Taxi PySpark ETL job
+2026-02-17 15:22:25,801 | INFO    | Reading data from: C:\Users\mukht\mantisai-de-internship\week3\data\NYC-taxi-dataset.csv
+2026-02-17 15:22:30,534 | ERROR   | Job failed: [CANNOT_CONVERT_COLUMN_INTO_BOOL] Cannot convert column into bool: please use '&' for 'and', '|' for 'or', '~' for 'not' when building DataFrame boolean expressions.
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 124, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 75, in main
+    col("trip_duration_min").between(0.5, 240) and
+    ...<3 lines>...
+    (col("total_amount") > 0)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\classic\column.py", line 623, in __nonzero__
+    raise PySparkValueError(
+    ...<2 lines>...
+    )
+pyspark.errors.exceptions.base.PySparkValueError: [CANNOT_CONVERT_COLUMN_INTO_BOOL] Cannot convert column into bool: please use '&' for 'and', '|' for 'or', '~' for 'not' when building DataFrame boolean expressions.
+2026-02-17 15:22:30,557 | INFO    | Closing down clientserver connection

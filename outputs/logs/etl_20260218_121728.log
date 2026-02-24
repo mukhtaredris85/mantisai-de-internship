@@ -1,0 +1,27 @@
+2026-02-18 12:17:28,704 | INFO    | Starting NYC Taxi PySpark ETL job
+2026-02-18 12:17:35,574 | INFO    | Reading data from: C:\Users\mukht\mantisai-de-internship\week3\data\NYC-yellow-taxi-dataset.csv
+2026-02-18 12:17:41,097 | ERROR   | Job failed: [CAST_INVALID_INPUT] The value '1/13/2015 20:26' of the type "STRING" cannot be cast to "TIMESTAMP" because it is malformed. Correct the value as per the syntax, or change its target type. Use `try_cast` to tolerate malformed input and return NULL instead. SQLSTATE: 22018
+== DataFrame ==
+"to_timestamp" was called from
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 125, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 87, in main
+    logger.info(f"Cleaned dataset has {df.count():,} rows")
+                                       ~~~~~~~~^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\classic\dataframe.py", line 439, in count
+    return int(self._jdf.count())
+               ~~~~~~~~~~~~~~~^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 269, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.DateTimeException: [CAST_INVALID_INPUT] The value '1/13/2015 20:26' of the type "STRING" cannot be cast to "TIMESTAMP" because it is malformed. Correct the value as per the syntax, or change its target type. Use `try_cast` to tolerate malformed input and return NULL instead. SQLSTATE: 22018
+== DataFrame ==
+"to_timestamp" was called from
+java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+
+2026-02-18 12:17:41,120 | INFO    | Closing down clientserver connection

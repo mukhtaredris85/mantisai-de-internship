@@ -1,0 +1,26 @@
+2026-02-17 15:07:16,330 | INFO    | Starting NYC Taxi PySpark ETL job
+2026-02-17 15:07:24,233 | INFO    | Reading data from: C:\Users\mukht\mantisai-de-internship\week3\data\NYC-taxi-dataset.csv
+2026-02-17 15:07:27,644 | ERROR   | Job failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `pickup_datetime` cannot be resolved. Did you mean one of the following? [`_c0`, `_c1`, `_c10`, `_c2`, `_c3`]. SQLSTATE: 42703;
+'Project [_c0#28, _c1#29, _c2#30, _c3#31, _c4#32, _c5#33, _c6#34, _c7#35, _c8#36, _c9#37, _c10#38, 'to_timestamp('pickup_datetime) AS pickup_datetime#40]
++- Project [_c0#17 AS _c0#28, _c1#18 AS _c1#29, _c2#19 AS _c2#30, _c3#20 AS _c3#31, _c4#21 AS _c4#32, _c5#22 AS _c5#33, _c6#23 AS _c6#34, _c7#24 AS _c7#35, _c8#25 AS _c8#36, _c9#26 AS _c9#37, _c10#27 AS _c10#38]
+   +- Relation [_c0#17,_c1#18,_c2#19,_c3#20,_c4#21,_c5#22,_c6#23,_c7#24,_c8#25,_c9#26,_c10#27] csv
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 119, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 63, in main
+    df = df.withColumn("pickup_datetime",  to_timestamp(col("pickup_datetime")))
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\classic\dataframe.py", line 1647, in withColumn
+    return DataFrame(self._jdf.withColumn(colName, col._jc), self.sparkSession)
+                     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 269, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `pickup_datetime` cannot be resolved. Did you mean one of the following? [`_c0`, `_c1`, `_c10`, `_c2`, `_c3`]. SQLSTATE: 42703;
+'Project [_c0#28, _c1#29, _c2#30, _c3#31, _c4#32, _c5#33, _c6#34, _c7#35, _c8#36, _c9#37, _c10#38, 'to_timestamp('pickup_datetime) AS pickup_datetime#40]
++- Project [_c0#17 AS _c0#28, _c1#18 AS _c1#29, _c2#19 AS _c2#30, _c3#20 AS _c3#31, _c4#21 AS _c4#32, _c5#22 AS _c5#33, _c6#23 AS _c6#34, _c7#24 AS _c7#35, _c8#25 AS _c8#36, _c9#26 AS _c9#37, _c10#27 AS _c10#38]
+   +- Relation [_c0#17,_c1#18,_c2#19,_c3#20,_c4#21,_c5#22,_c6#23,_c7#24,_c8#25,_c9#26,_c10#27] csv
+
+2026-02-17 15:07:27,669 | INFO    | Closing down clientserver connection

@@ -1,0 +1,7 @@
+2026-02-21 22:05:40,320 | INFO    | Starting NYC Taxi ETL
+2026-02-21 22:05:49,047 | INFO    | Reading data from C:\Users\mukht\mantisai-de-internship\week3\data\NYC-yellow-taxi-dataset.csv
+2026-02-21 22:05:55,592 | INFO    | Initial rows: 1,048,575
+2026-02-21 22:05:58,696 | INFO    | Cleaned rows: 1,037,958
+2026-02-21 22:06:08,936 | INFO    | Results saved successfully as single CSV files
+2026-02-21 22:06:09,250 | INFO    | ETL finished successfully
+2026-02-21 22:06:09,260 | INFO    | Closing down clientserver connection

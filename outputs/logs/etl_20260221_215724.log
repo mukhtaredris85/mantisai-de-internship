@@ -1,0 +1,30 @@
+2026-02-21 21:57:24,685 | INFO    | Starting NYC Taxi ETL job
+2026-02-21 21:57:33,417 | INFO    | Reading data from C:\Users\mukht\mantisai-de-internship\week3\data\NYC-yellow-taxi-dataset.csv
+2026-02-21 21:57:39,720 | INFO    | Initial rows: 1,048,575
+2026-02-21 21:57:40,309 | ERROR   | Job failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `M/d/yyyy H:mm` cannot be resolved. Did you mean one of the following? [`extra`, `fare_amount`, `mta_tax`, `payment_type`, `ratecodeid`]. SQLSTATE: 42703;
+'Project [vendorid#59, 'try_to_timestamp(pickup_datetime#60, 'M/d/yyyy H:mm) AS pickup_datetime#79, dropoff_datetime#61, passenger_count#62, trip_distance#63, pickup_longitude#64, pickup_latitude#65, ratecodeid#66, store_and_fwd_flag#67, dropoff_longitude#68, dropoff_latitude#69, payment_type#70, fare_amount#71, extra#72, mta_tax#73, tip_amount#74, tolls_amount#75, improvement_surcharge#76, total_amount#77]
++- Project [VendorID#17 AS vendorid#59, tpep_pickup_datetime#18 AS pickup_datetime#60, tpep_dropoff_datetime#19 AS dropoff_datetime#61, passenger_count#20 AS passenger_count#62, trip_distance#21 AS trip_distance#63, pickup_longitude#22 AS pickup_longitude#64, pickup_latitude#23 AS pickup_latitude#65, RateCodeID#24 AS ratecodeid#66, store_and_fwd_flag#25 AS store_and_fwd_flag#67, dropoff_longitude#26 AS dropoff_longitude#68, dropoff_latitude#27 AS dropoff_latitude#69, payment_type#28 AS payment_type#70, fare_amount#29 AS fare_amount#71, extra#30 AS extra#72, mta_tax#31 AS mta_tax#73, tip_amount#32 AS tip_amount#74, tolls_amount#33 AS tolls_amount#75, improvement_surcharge#34 AS improvement_surcharge#76, total_amount#35 AS total_amount#77]
+   +- Relation [VendorID#17,tpep_pickup_datetime#18,tpep_dropoff_datetime#19,passenger_count#20,trip_distance#21,pickup_longitude#22,pickup_latitude#23,RateCodeID#24,store_and_fwd_flag#25,dropoff_longitude#26,dropoff_latitude#27,payment_type#28,fare_amount#29,extra#30,mta_tax#31,tip_amount#32,tolls_amount#33,improvement_surcharge#34,total_amount#35] csv
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 192, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 107, in main
+    df = df.withColumn(
+        "pickup_datetime",
+        try_to_timestamp(col("pickup_datetime"), "M/d/yyyy H:mm")
+    )
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\classic\dataframe.py", line 1647, in withColumn
+    return DataFrame(self._jdf.withColumn(colName, col._jc), self.sparkSession)
+                     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 269, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `M/d/yyyy H:mm` cannot be resolved. Did you mean one of the following? [`extra`, `fare_amount`, `mta_tax`, `payment_type`, `ratecodeid`]. SQLSTATE: 42703;
+'Project [vendorid#59, 'try_to_timestamp(pickup_datetime#60, 'M/d/yyyy H:mm) AS pickup_datetime#79, dropoff_datetime#61, passenger_count#62, trip_distance#63, pickup_longitude#64, pickup_latitude#65, ratecodeid#66, store_and_fwd_flag#67, dropoff_longitude#68, dropoff_latitude#69, payment_type#70, fare_amount#71, extra#72, mta_tax#73, tip_amount#74, tolls_amount#75, improvement_surcharge#76, total_amount#77]
++- Project [VendorID#17 AS vendorid#59, tpep_pickup_datetime#18 AS pickup_datetime#60, tpep_dropoff_datetime#19 AS dropoff_datetime#61, passenger_count#20 AS passenger_count#62, trip_distance#21 AS trip_distance#63, pickup_longitude#22 AS pickup_longitude#64, pickup_latitude#23 AS pickup_latitude#65, RateCodeID#24 AS ratecodeid#66, store_and_fwd_flag#25 AS store_and_fwd_flag#67, dropoff_longitude#26 AS dropoff_longitude#68, dropoff_latitude#27 AS dropoff_latitude#69, payment_type#28 AS payment_type#70, fare_amount#29 AS fare_amount#71, extra#30 AS extra#72, mta_tax#31 AS mta_tax#73, tip_amount#32 AS tip_amount#74, tolls_amount#33 AS tolls_amount#75, improvement_surcharge#34 AS improvement_surcharge#76, total_amount#35 AS total_amount#77]
+   +- Relation [VendorID#17,tpep_pickup_datetime#18,tpep_dropoff_datetime#19,passenger_count#20,trip_distance#21,pickup_longitude#22,pickup_latitude#23,RateCodeID#24,store_and_fwd_flag#25,dropoff_longitude#26,dropoff_latitude#27,payment_type#28,fare_amount#29,extra#30,mta_tax#31,tip_amount#32,tolls_amount#33,improvement_surcharge#34,total_amount#35] csv
+
+2026-02-21 21:57:40,346 | INFO    | Closing down clientserver connection

@@ -1,0 +1,36 @@
+2026-02-18 13:09:05,697 | INFO    | Starting NYC Taxi PySpark ETL job
+2026-02-18 13:09:14,227 | INFO    | Reading data from: C:\Users\mukht\mantisai-de-internship\week3\data\NYC-taxi-dataset.csv
+2026-02-18 13:09:21,802 | INFO    | Initial row count: 1,048,575
+2026-02-18 13:09:22,478 | ERROR   | Job failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `trip_distance` cannot be resolved. Did you mean one of the following? [`trip_duration`, `id`, `trip_duration_min`, `pickup_datetime`, `vendor_id`]. SQLSTATE: 42703;
+'Filter 'and('and('and('and(((trip_duration_min#652 >= 0.5) AND (trip_duration_min#652 <= cast(240 as double))), 'and('`>=`('trip_distance, 0.1), '`<=`('trip_distance, 100))), ((passenger_count#643 >= 1) AND (passenger_count#643 <= 6))), '`>=`('fare_amount, 2.5)), '`>`('total_amount, 0))
++- Project [id#639, vendor_id#640, pickup_datetime#650, dropoff_datetime#651, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649, (cast((cast(dropoff_datetime#651 as bigint) - cast(pickup_datetime#650 as bigint)) as double) / cast(60 as double)) AS trip_duration_min#652]
+   +- Project [id#639, vendor_id#640, pickup_datetime#650, to_timestamp(dropoff_datetime#642, None, TimestampType, Some(Asia/Riyadh), true) AS dropoff_datetime#651, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649]
+      +- Project [id#639, vendor_id#640, to_timestamp(pickup_datetime#641, None, TimestampType, Some(Asia/Riyadh), true) AS pickup_datetime#650, dropoff_datetime#642, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649]
+         +- Project [id#17 AS id#639, vendor_id#18 AS vendor_id#640, pickup_datetime#19 AS pickup_datetime#641, dropoff_datetime#20 AS dropoff_datetime#642, passenger_count#21 AS passenger_count#643, pickup_longitude#22 AS pickup_longitude#644, pickup_latitude#23 AS pickup_latitude#645, dropoff_longitude#24 AS dropoff_longitude#646, dropoff_latitude#25 AS dropoff_latitude#647, store_and_fwd_flag#26 AS store_and_fwd_flag#648, trip_duration#27 AS trip_duration#649]
+            +- Relation [id#17,vendor_id#18,pickup_datetime#19,dropoff_datetime#20,passenger_count#21,pickup_longitude#22,pickup_latitude#23,dropoff_longitude#24,dropoff_latitude#25,store_and_fwd_flag#26,trip_duration#27] csv
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 164, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 98, in main
+    df = df.filter(
+        (col("trip_duration_min").between(0.5, 240)) &
+    ...<3 lines>...
+        (col("total_amount") > 0)
+    )
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\classic\dataframe.py", line 1036, in filter
+    jdf = self._jdf.filter(condition._jc)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 269, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.AnalysisException: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `trip_distance` cannot be resolved. Did you mean one of the following? [`trip_duration`, `id`, `trip_duration_min`, `pickup_datetime`, `vendor_id`]. SQLSTATE: 42703;
+'Filter 'and('and('and('and(((trip_duration_min#652 >= 0.5) AND (trip_duration_min#652 <= cast(240 as double))), 'and('`>=`('trip_distance, 0.1), '`<=`('trip_distance, 100))), ((passenger_count#643 >= 1) AND (passenger_count#643 <= 6))), '`>=`('fare_amount, 2.5)), '`>`('total_amount, 0))
++- Project [id#639, vendor_id#640, pickup_datetime#650, dropoff_datetime#651, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649, (cast((cast(dropoff_datetime#651 as bigint) - cast(pickup_datetime#650 as bigint)) as double) / cast(60 as double)) AS trip_duration_min#652]
+   +- Project [id#639, vendor_id#640, pickup_datetime#650, to_timestamp(dropoff_datetime#642, None, TimestampType, Some(Asia/Riyadh), true) AS dropoff_datetime#651, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649]
+      +- Project [id#639, vendor_id#640, to_timestamp(pickup_datetime#641, None, TimestampType, Some(Asia/Riyadh), true) AS pickup_datetime#650, dropoff_datetime#642, passenger_count#643, pickup_longitude#644, pickup_latitude#645, dropoff_longitude#646, dropoff_latitude#647, store_and_fwd_flag#648, trip_duration#649]
+         +- Project [id#17 AS id#639, vendor_id#18 AS vendor_id#640, pickup_datetime#19 AS pickup_datetime#641, dropoff_datetime#20 AS dropoff_datetime#642, passenger_count#21 AS passenger_count#643, pickup_longitude#22 AS pickup_longitude#644, pickup_latitude#23 AS pickup_latitude#645, dropoff_longitude#24 AS dropoff_longitude#646, dropoff_latitude#25 AS dropoff_latitude#647, store_and_fwd_flag#26 AS store_and_fwd_flag#648, trip_duration#27 AS trip_duration#649]
+            +- Relation [id#17,vendor_id#18,pickup_datetime#19,dropoff_datetime#20,passenger_count#21,pickup_longitude#22,pickup_latitude#23,dropoff_longitude#24,dropoff_latitude#25,store_and_fwd_flag#26,trip_duration#27] csv
+
+2026-02-18 13:10:03,794 | INFO    | Closing down clientserver connection
