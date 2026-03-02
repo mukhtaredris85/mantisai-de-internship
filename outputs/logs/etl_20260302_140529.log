@@ -1,0 +1,20 @@
+2026-03-02 14:05:29,236 | INFO    | Starting NYC Taxi ETL
+2026-03-02 14:05:49,615 | INFO    | Reading data from https://www.kaggle.com/datasets/elemento/nyc-yellow-taxi-trip-data?select=yellow_tripdata_2016-01.csv
+2026-03-02 14:05:50,714 | ERROR   | Job failed: 
+Traceback (most recent call last):
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 193, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\mukht\mantisai-de-internship\week3\etl\etl_pipeline.py", line 96, in main
+    .csv(data_path)
+     ~~~^^^^^^^^^^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\sql\readwriter.py", line 838, in csv
+    return self._df(self._jreader.csv(self._spark._sc._jvm.PythonUtils.toSeq(path)))
+                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\py4j\java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+        answer, self.gateway_client, self.target_id, self.name)
+  File "C:\Users\mukht\mantisai-de-internship\.venv\Lib\site-packages\pyspark\errors\exceptions\captured.py", line 269, in deco
+    raise converted from None
+pyspark.errors.exceptions.captured.UnsupportedOperationException
+2026-03-02 14:05:50,739 | INFO    | Closing down clientserver connection
